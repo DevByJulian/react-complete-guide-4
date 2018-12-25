@@ -47,34 +47,40 @@ class App extends Component {
   };
 
   render() {
+
+    let persons = null;
+
+    if(this.state.showHide) {
+      persons = (
+        <div>
+          <button onClick={() => this.switchNameHandler("Whatever!")}>
+            Switch Name
+          </button>
+          <Person
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            change={this.changeNameHandler}
+          />
+          <Person
+            name={this.state.persons[1].name}
+            age={this.state.persons[1].age}
+          />
+          <Person
+            click={this.switchNameHandler.bind(this, "Maggie!")}
+            name={this.state.persons[2].name}
+            age={this.state.persons[2].age}
+          >
+            I'm just a basicboy!
+          </Person>
+        </div>
+      )
+    }
     return (
       <div className="App">
         <button className="m-4" onClick={this.toggleShowHideHandlerMaxWay}>
           {this.state.showHide ? "Hide" : "Show"}
         </button>
-        {this.state.showHide ? (
-          <div>
-            <button onClick={() => this.switchNameHandler("Whatever!")}>
-              Switch Name
-            </button>
-            <Person
-              name={this.state.persons[0].name}
-              age={this.state.persons[0].age}
-              change={this.changeNameHandler}
-            />
-            <Person
-              name={this.state.persons[1].name}
-              age={this.state.persons[1].age}
-            />
-            <Person
-              click={this.switchNameHandler.bind(this, "Maggie!")}
-              name={this.state.persons[2].name}
-              age={this.state.persons[2].age}
-            >
-              I'm just a basicboy!
-            </Person>
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
