@@ -56,22 +56,9 @@ class App extends Component {
           <button onClick={() => this.switchNameHandler("Whatever!")}>
             Switch Name
           </button>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age}
-            change={this.changeNameHandler}
-          />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-          />
-          <Person
-            click={this.switchNameHandler.bind(this, "Maggie!")}
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age}
-          >
-            I'm just a basicboy!
-          </Person>
+          {this.state.persons.map(person => {
+            return <Person name={person.name} age={person.age} />
+          })}
         </div>
       )
     }
