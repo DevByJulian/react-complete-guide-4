@@ -56,9 +56,6 @@ class App extends Component {
     if (this.state.showHide) {
       persons = (
         <div>
-          <button onClick={() => this.switchNameHandler("Whatever!")}>
-            Switch Name
-          </button>
           {this.state.persons.map((person, index) => {
             return (
               <Person
